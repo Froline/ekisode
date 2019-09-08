@@ -34,8 +34,8 @@ class LogoutHandler(BaseHandler):
 		this.clear_cookie('user')
 		this.redirect(r'/login')
 
-@tornado.web.authenticated
 class TopPageHandler(BaseHandler):
+	@tornado.web.authenticated
 	def get(this):
 		this.write('you are now logged in! congrats!')
 
