@@ -24,6 +24,6 @@ class Account(Base):
         self.password = bcrypt.hashpw(password.encode(), salt)
 
     def check_password(self, given_password):
-        return bcrypt.checkpw(given_password, self.password)
+        return bcrypt.checkpw(given_password.encode(), self.password.encode())
         
 
