@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+    font-family: monospace;
+}
+body {
+    font-size: 1.6rem;
+}
+
+header {
+    position: sticky;
+    top: 0; left: 0; right: 0;
+    background: transparent;
+    height: 3rem;
+
+    background-color: rgba(230,230,230,.8);
+    border-bottom: solid 1px blue;
+
+    display: grid;
+    grid-template-columns: 3rem 1fr 3rem;
+    grid-template-rows: 1fr;
+}
+
+header div:nth-child(1) img {
+    width: 100%;
+}
+
+header div:nth-child(2) {
+    font-size: 2rem;
+}
+header div:nth-child(3) {
+    font-size: 3rem;
+}
+
+section > div {
+    height: 300%;
+    background: #770;
+}
+
+

@@ -1,0 +1,11 @@
+<header>
+<div><a href='/'><img src='{{ static_url("img/logo.svg") }}'></a></div>
+<div>
+{% if not user is None %}
+{{ user['display_name'] }}
+{% else %}
+not logined.
+{% end %}
+</div>
+<div>三</div>
+</header>

@@ -23,7 +23,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
 class LoginHandler(BaseHandler):
 	def get(this):
-		this.render('login.html', next='index.html')
+		this.render('login.html', next='index.html', user=this.get_current_user())
 	def post(this):
 		try:
 			username = this.get_argument('username')
@@ -53,7 +53,7 @@ class LogoutHandler(BaseHandler):
 
 class RegisterHandler(BaseHandler):
 	def get(this):
-		this.render('register.html', next='login.html')
+		this.render('register.html', next='login.html', user=this.get_current_user())
 	def post(this):
 		try:
 			username = this.get_argument('username')
@@ -79,19 +79,18 @@ class RegisterHandler(BaseHandler):
 class TopPageHandler(BaseHandler):
 	@tornado.web.authenticated
 	def get(this):
-		this.write('you are now logged in! congrats!<br>')
-		this.write('your userid is: %s' % this.get_current_user()['display_name'])
+		this.render('index.html', user=this.get_current_user())
 
 
 
 
-def testapp():
+def app_ekisode():
 	return tornado.web.Application([
 		(r'/login', LoginHandler),
 		(r'/logout', LogoutHandler),
 		(r'/register', RegisterHandler),
 		(r'/', TopPageHandler),
-	], template_path='template/', cookie_secret=_const.secure_cookie_secret)
+	], template_path='template/', static_path='static/', cookie_secret=_const.secure_cookie_secret)
 
 
 sql = None
@@ -101,7 +100,7 @@ if __name__ == '__main__':
 	Sql_Session = sessionmaker(bind=sql_engine)
 	sql = Sql_Session()
 
-	app = testapp()
+	app = app_ekisode()
 	app.listen(8585)
 	tornado.ioloop.IOLoop.current().start()
 
