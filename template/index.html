@@ -8,17 +8,35 @@
 <body>
 {% include common/header.html %}
 
-<section>
-<div>
-You are logged in as {{ user['display_name'] }}
-<span style="font-size:16px;">
-これは16pxです
-</span>
-<span style="font-size:1.6rem;">
-これは1.6remです
-</span>
-</div>
+<main>
+
+<section id='banner'>
+<img src='{{ static_url("img/top_photo_1.jpg") }}'>
+<span id='banner-text'>EKISODE</span>
 </section>
+
+<div class='spacer'></div>
+
+<section id='buttons'>
+
+<a href='javascript:alert("TEST")' class='button-img-square'>
+<img src='{{ static_url("img/map.svg") }}'>
+<span>始める</span>
+</a>
+
+<a href='javascript:alert("TEST")' class='button-img-row'>
+<img src='{{ static_url("img/magnify.svg") }}'>
+<span>探す</span>
+</a>
+
+<a href='javascript:alert("TEST")' class='button-img-row'>
+<img src='{{ static_url("img/pencil.svg") }}'>
+<span>作る</span>
+</a>
+
+</section>
+
+</main>
 
 </body>
    

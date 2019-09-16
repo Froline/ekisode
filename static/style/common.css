@@ -8,36 +8,173 @@ html {
 }
 body {
     font-size: 1.6rem;
+    color: rgb(200,200,200);
 }
+
+div.spacer {
+    width: 100vw;
+    height: 3rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 header {
     position: sticky;
     top: 0; left: 0; right: 0;
     background: transparent;
-    height: 3rem;
+    height: 5rem;
 
     background-color: rgba(230,230,230,.8);
-    border-bottom: solid 1px blue;
-
-    display: grid;
-    grid-template-columns: 3rem 1fr 3rem;
-    grid-template-rows: 1fr;
+    border-bottom: solid 1px rgb(200,200,230);
+    z-index: 100;
+    color: black;
 }
 
-header div:nth-child(1) img {
+header div:nth-of-type(1) {
+    position: absolute;
+    top: 0;  left: 0;
+    width: 5rem;  height: 5rem;
+}
+header div:nth-of-type(1) img {
     width: 100%;
 }
 
-header div:nth-child(2) {
+header div:nth-of-type(2) {
+    position: absolute;
+    top: 0;  left: 5rem;
+    height: 5rem;  width: calc(100% - 10rem);
     font-size: 2rem;
+    line-height: 5rem;
 }
-header div:nth-child(3) {
+
+header div:nth-of-type(3) {
+    position: absolute;
+    top: 0;  right: 0;
+    height: 5rem;  width: 100%;
+}
+header div:nth-of-type(3) img {
+    position: absolute;
+    top: 0;  right: 0;
+    height: 100%;
+}
+header div:nth-of-type(3) input[type=checkbox] {
+    display: none;
+}
+header div:nth-of-type(3) input[type=checkbox] + nav {
+    display: none;
+    position: absolute;
+    top: 5rem;  right: 0;
+    width: 100%;
+    background: red;
+}
+header div:nth-of-type(3) input[type=checkbox]:checked + nav {
+    display: block;
+}
+
+main {
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    background: rgb(0, 0, 20)
+}
+
+main > section {
+    width: 100%;
+    position: relative;
+}
+
+section#banner {
+    height: 35vh;
+    overflow: hidden;
+    filter: saturate(50%);
+}
+section#banner img {
+    position: absolute;
+    left: 50%;  top: 50%;
+    transform: translate(-50%, -50%);
+    width: 150vw;
+    filter: blur(5px) brightness(90%);
+    animation: 6s infinite banner-img;
+}
+@keyframes banner-img {
+    0%   {  filter: blur(5px) brightness(90%);  top: 50%; left: 50%; }
+    20%  {  filter: blur(7px) brightness(80%);  top: calc(50% + .9rem); left: calc(50% + .4rem); }
+    30%  {  filter: blur(5px) brightness(100%); top: calc(50% + .2rem); left: calc(50% - .1rem); }
+    50%  {  filter: blur(8px) brightness(70%);  top: calc(50% - .2rem); left: calc(50% - .8rem); }
+    60%  {  filter: blur(4px) brightness(100%); top: calc(50% + .7rem); left: calc(50% - .3rem); }
+    90%  {  filter: blur(6px) brightness(80%);  top: calc(50% - .4rem); left: calc(50% + .4rem); }
+    100% {  filter: blur(5px) brightness(90%);  top: 50%; left: 50%; }
+}
+#banner-text {
+    position: absolute;
+    left: 50%;  top: 50%;
+    font-size: 5rem;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+section#buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 25vw 25vw;
+}
+section#buttons a {
+    display: block;
+}
+section#buttons a:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+.button-img-square, .button-img-row {
+    position: relative;
+    margin: 1rem;
+    background: rgb(20,20,40);
+    border-right: solid 2px rgb(127,127,150);
+    border-bottom: solid 2px rgb(127,127,150);
+    border-top: solid 0px transparent;
+    border-left: solid 0px transparent;
+    transition: border-right .4s, border-bottom .4s, border-left .4s, border-top .4s, background .4s;
+}
+.button-img-square:hover, .button-img-row:hover, .button-img-square:active, .button-img-row:active {
+    background: rgb(60,60,100);
+    border-right: solid 0px transparent;
+    border-bottom: solid 0px transparent;
+    border-top: solid 2px rgb(127,127,150);
+    border-left: solid 2px rgb(127,127,150);
+    transition: border-right .4s, border-bottom .4s, border-left .4s, border-top .4s, background .4s;
+}
+.button-img-square img, .button-img-row img {
+    position: absolute;
+    filter: brightness(200%);
+    transform: translate(-50%, -50%);
+}
+.button-img-square img {
+    top: 35%;  left: 50%;
+    height: 50%;
+}
+.button-img-row img {
+    top: 50%;  left: 25%;
+    height: 70%;
+}
+.button-img-square span, .button-img-row span {
+    display: block;
+    position: absolute;
     font-size: 3rem;
+    letter-spacing: .2rem;
+    text-align: center;
 }
-
-section > div {
-    height: 300%;
-    background: #770;
+.button-img-square span {
+    width: 100%;
+    bottom: 3rem;
 }
-
-
+.button-img-row span {
+    left: 45%;
+    top: 50%;
+    width: 55%;
+    transform: translateY(-50%);
+}

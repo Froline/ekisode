@@ -1,11 +1,23 @@
 <header>
+
 <div><a href='/'><img src='{{ static_url("img/logo.svg") }}'></a></div>
+
 <div>
 {% if not user is None %}
-{{ user['display_name'] }}
+logged in as: {{ user['display_name'] }}
 {% else %}
 not logined.
 {% end %}
 </div>
-<div>三</div>
+
+<div>
+<label for='menubar-chk'><img src='{{ static_url("img/menubar.svg") }}'></label>
+<input type='checkbox' id='menubar-chk'>
+<nav>
+ほげほげ<br>
+ぴよぴよ
+</nav>
+
+</div>
+
 </header>
